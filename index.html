@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca Felipe Correia | Obras</title>
+  <meta name="description" content="Biblioteca autoral com livros humanos, reflexivos e sensíveis de Felipe Correia." />
+  <style>
+    :root {
+      --bg: #0d0a09;
+      --bg-soft: #171210;
+      --card: rgba(255,255,255,0.045);
+      --line: rgba(255,255,255,0.10);
+      --text: #f2e8dd;
+      --muted: #c8b39f;
+      --accent: #d3b08a;
+      --shadow: 0 24px 70px rgba(0,0,0,0.42);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(211,176,138,0.10), transparent 24%),
+        radial-gradient(circle at left center, rgba(110,78,55,0.12), transparent 18%),
+        linear-gradient(180deg, #120e0c 0%, #090807 100%);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(13,10,9,0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 0.86rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 0.84rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 0.95;
+      font-weight: normal;
+      text-wrap: balance;
+    }
+
+    .subtitle {
+      margin: 0 0 14px;
+      font-size: clamp(1.05rem, 2vw, 1.34rem);
+      color: var(--muted);
+      max-width: 820px;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 860px;
+      color: #e7dbcd;
+      font-size: 1.03rem;
+    }
+
+    .section {
+      padding: 42px 0 18px;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      font-weight: normal;
+    }
+
+    .section-intro {
+      margin: 0 0 24px;
+      color: var(--muted);
+      max-width: 820px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 18px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      align-items: center;
+    }
+
+    .card-cover {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .card-cover img {
+      width: 100%;
+      aspect-ratio: 3 / 4.4;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.22rem;
+      font-weight: normal;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.03);
+    }
+
+    footer {
+      padding: 28px 0 46px;
+      color: #b49f89;
+      font-size: 0.92rem;
+    }
+
+    .small-note {
+      margin-top: 10px;
+      color: #ad977f;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        padding: 10px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card {
+        grid-template-columns: 1fr;
+      }
+
+      .card-cover img {
+        aspect-ratio: 3 / 4;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 12vw, 4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Biblioteca Felipe Correia</div>
+      <nav class="nav">
+        <a href="#obras">Obras</a>
+        <a href="#colecoes">Coleções</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Obras autorais</span>
+        <h1>Livros para ler com mais presença, mais leitura e menos ruído.</h1>
+        <p class="subtitle">Uma biblioteca inicial para apresentar todas as obras em uma única página, com clima sóbrio, literário e humano.</p>
+        <p class="lead">Aqui, o foco não é vender agressivamente. É mostrar o conjunto da obra com clareza, unidade visual e comentários curtos que deem identidade a cada livro. Depois, os links de compra podem entrar com calma.</p>
+      </div>
+    </section>
+
+    <section id="obras" class="section container">
+      <h2 class="section-title">Obras</h2>
+      <p class="section-intro">Cada bloco ocupa pouco espaço e apresenta o essencial: tema, clima e lugar de cada livro dentro da biblioteca.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-cover"><img src="assets/capa-amar-sem-possuir.jpg" alt="Capa do livro Amar sem possuir"></div>
+          <div>
+            <span class="tag">Vínculos humanos</span>
+            <h3>Amar sem possuir</h3>
+            <p>Um livro sobre limite, vínculo, respeito e maturidade nas relações humanas, com tom íntimo, adulto e emocionalmente contido.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover"><img src="assets/capa-menos-ruido-mais-vida.jpg" alt="Capa do livro Menos Ruído, Mais Vida"></div>
+          <div>
+            <span class="tag">Transição e trabalho</span>
+            <h3>Menos Ruído, Mais Vida</h3>
+            <p>Um recomeço com menos desgaste: lucidez, rotina mais humana e caminhos possíveis para trabalhar sem se destruir.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover"><img src="assets/capa-linguagem-animal.jpg" alt="Capa do livro Linguagem Animal"></div>
+          <div>
+            <span class="tag">Comportamento animal</span>
+            <h3>Linguagem Animal</h3>
+            <p>Uma leitura ética do comportamento de cães e gatos, sem violência, culpa ou achismos, voltada à convivência real.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover"><img src="assets/capa-linguagem-felina.jpg" alt="Capa do livro Linguagem Felina"></div>
+          <div>
+            <span class="tag">Universo felino</span>
+            <h3>Linguagem Felina</h3>
+            <p>Um livro sobre leitura, segurança, rotina e vínculo com gatos, sem invasão e sem interpretar distância como rejeição.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover"><img src="assets/capa-educar-sem-apagar.jpg" alt="Capa do livro Educar sem apagar"></div>
+          <div>
+            <span class="tag">Ética do vínculo</span>
+            <h3>Educar sem apagar</h3>
+            <p>Formação com limite, presença e respeito: um livro sobre educar sem transformar cuidado em domínio.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover"><img src="assets/capa-liderar-sem-controlar.jpg" alt="Capa do livro Liderar sem controlar"></div>
+          <div>
+            <span class="tag">Ética do vínculo</span>
+            <h3>Liderar sem controlar</h3>
+            <p>Autoridade, escuta e responsabilidade na condução de pessoas, com foco em liderança sem esmagamento subjetivo.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="colecoes" class="section container">
+      <h2 class="section-title">Coleções e linhas</h2>
+      <p class="section-intro">A biblioteca pode crescer reunindo obras por afinidade temática, sem perder unidade visual.</p>
+      <div class="grid">
+        <article class="card">
+          <div>
+            <span class="tag">Linha humana</span>
+            <h3>Vínculos, transição e presença</h3>
+            <p>Livros sobre relações humanas, trabalho, recomeço e modos mais dignos de viver, amar e atravessar mudanças.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div>
+            <span class="tag">Linha pet</span>
+            <h3>Comportamento e convivência ética</h3>
+            <p>Livros voltados à leitura comportamental de cães e gatos, com ênfase em respeito, ambiente, vínculo e manejo responsável.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div>© Biblioteca Felipe Correia</div>
+    <div class="small-note">Estrutura inicial sem links de venda, pensada para apresentar todo o conjunto da obra.</div>
+  </footer>
+</body>
+</html>
